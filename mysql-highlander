@@ -1,0 +1,9 @@
+#!/bin/bash
+
+logfile='/home/dfelinto/mysql-log'
+status=`service mysql status | grep process`
+
+if [ "$status" == "" ]; then
+  echo "MySQL Failed:" `date` >> $logfile
+  /usr/bin/service mysql restart
+fi
